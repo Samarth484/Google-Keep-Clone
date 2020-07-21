@@ -9,12 +9,28 @@ function App() {
   function addNoteCard(newNoteCard) {
     setNotesArr(prevValues => [...prevValues, newNoteCard]);
   }
+  function deleteNote(id) {
+    setNotesArr(prevNotes => {
+      return prevNotes.filter((noteItem, index) => {
+        return index !== id;
+      });
+    });
+  }
+
   return (
     <div>
       <Header />
       <CreateArea onNewNote={addNoteCard} />
-      {notesArr.map(val => {
-        return <Note title={val.title} content={val.content} />;
+      {notesArr.map((val, index) => {
+        return (
+          <Note
+            title={val.title}
+            key={index}
+            id={index}
+            onDelClick={deleteNote}
+            content={val.content}
+          />
+        );
       })}
 
       {/* <Note key={1} title="Note title" content="Note content" /> */}
