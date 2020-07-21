@@ -13,6 +13,10 @@ function CreateArea(props) {
     props.onNewNote(note);
     console.log(note);
     Event.preventDefault();
+    setNote({
+      title: "",
+      content: ""
+    });
   }
   return (
     <div>
