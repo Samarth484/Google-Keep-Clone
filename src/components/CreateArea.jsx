@@ -9,8 +9,8 @@ function CreateArea(props) {
     const { name, value } = event.target;
     setNote(preValues => ({ ...preValues, [name]: value }));
   }
-  function onAdd() {
-    Event.preventDefault();
+  function onAdd(event) {
+    event.preventDefault();
     props.onNewNote(note);
     // console.log(note);
     
