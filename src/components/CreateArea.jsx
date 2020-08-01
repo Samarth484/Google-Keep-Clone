@@ -1,41 +1,52 @@
 import React, { useState } from "react";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
+// import NoteAddIcon from '@material-ui/icons/NoteAdd';
+import Fab from "@material-ui/core/Fab";
 function CreateArea(props) {
   const [note, setNote] = useState({
     title: "",
     content: ""
   });
+
   function handleChange(event) {
     const { name, value } = event.target;
-    setNote(preValues => ({ ...preValues, [name]: value }));
+
+    setNote(prevNote => {
+      return {
+        ...prevNote,
+        [name]: value
+      };
+    });
   }
-  function onAdd(event) {
-    event.preventDefault();
-    props.onNewNote(note);
-    // console.log(note);
-    
+
+  function submitNote(event) {
+    props.onAdd(note);
     setNote({
       title: "",
       content: ""
     });
+    event.preventDefault();
   }
+
   return (
     <div>
-      <form>
+      <form className="create-note">
         <input
-          onChange={handleChange}
           name="title"
-          placeholder="Title"
+          onChange={handleChange}
           value={note.title}
+          placeholder="Title"
         />
         <textarea
-          onChange={handleChange}
           name="content"
+          onChange={handleChange}
+          value={note.content}
           placeholder="Take a note..."
           rows="3"
-          value={note.content}
         />
-        <button onClick={onAdd}> <AddCircleIcon /></button>
+        <Fab onClick={submitNote}>
+          <AddCircleIcon />
+        </Fab>
       </form>
     </div>
   );

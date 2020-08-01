@@ -2,8 +2,9 @@ import React from "react";
 import DeleteSweepIcon from '@material-ui/icons/DeleteSweep';
 function Note(props) {
   function handleClick() {
-    props.onDelClick(props.id);
+    props.onDelete(props.id);
   }
+
   return (
     <div className="note">
       <h1>{props.title}</h1>
