@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 // import NoteAddIcon from '@material-ui/icons/NoteAdd';
 import Fab from "@material-ui/core/Fab";
+import Zoom from '@material-ui/core/Zoom';
 function CreateArea(props) {
   const [note, setNote] = useState({
     title: "",
@@ -44,9 +45,11 @@ function CreateArea(props) {
           placeholder="Take a note..."
           rows="3"
         />
+        <Zoom in={true}>
         <Fab onClick={submitNote}>
           <AddCircleIcon />
         </Fab>
+        </Zoom>
       </form>
     </div>
   );
