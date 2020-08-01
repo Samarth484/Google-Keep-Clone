@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import AddCircleIcon from "@material-ui/icons/AddCircle";
 function CreateArea(props) {
   const [note, setNote] = useState({
     title: "",
@@ -35,7 +35,7 @@ function CreateArea(props) {
           rows="3"
           value={note.content}
         />
-        <button onClick={onAdd}>Add</button>
+        <button onClick={onAdd}> <AddCircleIcon /></button>
       </form>
     </div>
   );
